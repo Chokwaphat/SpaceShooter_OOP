@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.chokwapeem.managers.GameInputProcessor;
 import com.chokwapeem.managers.GameKeys;
+import com.chokwapeem.managers.GameStateManager;
 
 public class Spaceshooter extends ApplicationAdapter {
 	
@@ -16,6 +17,8 @@ public class Spaceshooter extends ApplicationAdapter {
 	public static int HEIGHT;
 	
 	public static OrthographicCamera cam;
+	
+	private GameStateManager gsm;
 	
 	
 	@Override
@@ -28,12 +31,17 @@ public class Spaceshooter extends ApplicationAdapter {
 		cam.update();
 		
 		Gdx.input.setInputProcessor(new GameInputProcessor());
+		
+		gsm = new GameStateManager();
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		gsm.update(Gdx.graphics.getDeltaTime());
+		gsm.draw();
 		
 		GameKeys.update();
 		

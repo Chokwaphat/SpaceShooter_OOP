@@ -10,6 +10,7 @@ public class GameInputProcessor extends InputAdapter {
 	
 	public boolean keyDown(int k) {
 		if(k == Keys.UP) {
+			System.out.println(k);
 			GameKeys.setKey(GameKeys.UP, true);
 		}
 		

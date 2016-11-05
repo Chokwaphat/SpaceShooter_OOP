@@ -1,13 +1,10 @@
 package com.chokwapeem.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
-import com.chokwapeem.game.Spaceshooter;
 
-public class Player extends SpaceObject {
-	
+public class Player2 extends SpaceObject {
 	private boolean left;
 	private boolean right;
 	private boolean up;
@@ -16,9 +13,9 @@ public class Player extends SpaceObject {
 	private float accelerate;
 	private float decelerate;
 	
-	public Player () {
+	public Player2 () {
 		
-		x = Spaceshooter.WIDTH / 2 - 200;
+		x = Spaceshooter.WIDTH / 2 + 200;
 		y = Spaceshooter.HEIGHT / 2;
 		
 		maxSpeed = 300;
@@ -91,7 +88,7 @@ public class Player extends SpaceObject {
 	public void draw(ShapeRenderer sr) {
 		
 		
-		sr.setColor(255, 255, 0, 1);
+		sr.setColor(0, 0, 255, 1);
 		
 		sr.begin(ShapeType.Line);
 		
@@ -102,4 +99,5 @@ public class Player extends SpaceObject {
 		sr.end();
 		
 	}	
+	
 }

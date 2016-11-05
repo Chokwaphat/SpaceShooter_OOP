@@ -1,4 +1,4 @@
-package com.chokwapeem.elements;
+package com.chokwapeem.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -35,13 +35,14 @@ public class Player extends SpaceObject {
 	
 	private void setShape() {
 		shapex[0] = x + MathUtils.cos(radians) * 8;
-		shapey[0] = y + MathUtils.sin(radians) *8;
+		shapey[0] = y + MathUtils.sin(radians) * 8;
 		shapex[1] = x + MathUtils.cos(radians - 4 * 3.14f / 5) * 8;
 		shapey[1] = y + MathUtils.sin(radians - 4 * 3.14f / 5) * 8;
 		shapex[2] = x + MathUtils.cos(radians + 3.14f) * 5;
 		shapey[2] = y + MathUtils.sin(radians + 3.14f) * 5;
 		shapex[3] = x + MathUtils.cos(radians + 4 * 3.14f / 5) * 8;
 		shapey[3] = y + MathUtils.sin(radians + 4 * 3.14f / 5) * 8;
+		
 	}
 	
 	public void setLeft(boolean b) {
@@ -59,11 +60,10 @@ public class Player extends SpaceObject {
 	public void update(float dt) {
 		if(left) {
 			radians += rotationSpeed * dt;	
+		} else if(right) {
+			radians -= rotationSpeed * dt;
 		}
 		
-		else if(right) {
-			radians -= rotationSpeed *dt;
-		}
 		if(up) {
 			dx += MathUtils.cos(radians) * accelerate * dt;
 			dy += MathUtils.sin(radians) * accelerate * dt;
@@ -88,6 +88,7 @@ public class Player extends SpaceObject {
 	}
 	
 	public void draw(ShapeRenderer sr) {
+		
 		
 		sr.setColor(255, 255, 0, 1);
 		

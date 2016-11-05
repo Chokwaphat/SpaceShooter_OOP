@@ -1,7 +1,4 @@
-package com.chokwapeem.managers;
-
-import com.chokwapeem.gamestates.GameState;
-import com.chokwapeem.gamestates.PlayState;
+package com.chokwapeem.game;
 
 public class GameStateManager {
 

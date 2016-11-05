@@ -1,9 +1,6 @@
-package com.chokwapeem.gamestates;
+package com.chokwapeem.game;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.chokwapeem.elements.Player;
-import com.chokwapeem.managers.GameKeys;
-import com.chokwapeem.managers.GameStateManager;
 
 public class PlayState extends GameState {
 	

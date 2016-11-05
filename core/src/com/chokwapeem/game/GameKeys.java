@@ -1,9 +1,9 @@
-package com.chokwapeem.managers;
+package com.chokwapeem.game;
 
 public class GameKeys {
 	
 	private static boolean[] keys;
-	private static boolean[] pkeys;
+	private static boolean[] keysPressed;
 	
 	private static final int NUM_KEYS = 8;
 	public static final int UP = 0;
@@ -17,12 +17,12 @@ public class GameKeys {
 	
 	static {
 		keys = new boolean[NUM_KEYS];
-		pkeys = new boolean[NUM_KEYS];
+		keysPressed = new boolean[NUM_KEYS];
 	}
 	
 	public static void update() {
 		for(int i = 0; i < NUM_KEYS; i++) {
-			pkeys[i] = keys[i];
+			keysPressed[i] = keys[i];
 			
 		}
 	}
@@ -37,7 +37,7 @@ public class GameKeys {
 	}
 	
 	public static boolean isPressed(int k) {
-		return keys[k] && !pkeys[k];
+		return keys[k] && !keysPressed[k];
 	}
 	
 }

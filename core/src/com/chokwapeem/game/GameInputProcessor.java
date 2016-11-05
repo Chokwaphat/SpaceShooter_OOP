@@ -1,4 +1,4 @@
-package com.chokwapeem.managers;
+package com.chokwapeem.game;
 
 
 import com.badlogic.gdx.Input.Keys;

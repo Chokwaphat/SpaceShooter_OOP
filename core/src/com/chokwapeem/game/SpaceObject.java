@@ -1,4 +1,4 @@
-package com.chokwapeem.elements;
+package com.chokwapeem.game;
 
 import com.chokwapeem.game.Spaceshooter;
 

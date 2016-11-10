@@ -3,6 +3,7 @@ package com.chokwapeem.game;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 
 public class PlayState extends GameState {
 
@@ -12,6 +13,7 @@ public class PlayState extends GameState {
 	private Player2 player2;
 	
 	private ArrayList<Bullet> bullets;
+	private ArrayList<Asteroid> asteroids;
 
 	public PlayState(GameStateManager gsm) {
 		
@@ -27,6 +29,11 @@ public class PlayState extends GameState {
 		bullets = new ArrayList<Bullet>();
 		player = new Player(bullets);
 		player2 = new Player2(bullets);
+		
+		asteroids = new ArrayList<Asteroid>();
+		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.SMALL));
+		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.MEDIUM));
+		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.LARGE));
 	}
 
 	@Override
@@ -46,7 +53,17 @@ public class PlayState extends GameState {
 				i--;
 			}
 		}
+		
+		for(int i = 0; i < asteroids.size(); i++) {
+			asteroids.get(i).update(dt);
+			if(asteroids.get(i).shouldRemove()) {
+				asteroids.remove(i);
+				i--;
+			}
+		}
+
 	}
+	
 
 	@Override
 	public void draw() {
@@ -56,6 +73,10 @@ public class PlayState extends GameState {
 		
 		for(int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).draw(sr);
+		}
+		
+		for(int i = 0; i < asteroids.size(); i++) {
+			asteroids.get(i).draw(sr);
 		}
 	}
 

@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Spaceshooter extends ApplicationAdapter {
-
 	public static int WIDTH;
 	public static int HEIGHT;
 

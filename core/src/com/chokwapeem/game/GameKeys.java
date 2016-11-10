@@ -1,7 +1,6 @@
 package com.chokwapeem.game;
 
 public class GameKeys {
-	
 	private static boolean[] keys;
 	private static boolean[] pkeys;
 	

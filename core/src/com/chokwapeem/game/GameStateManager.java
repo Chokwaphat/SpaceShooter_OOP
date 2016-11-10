@@ -1,7 +1,6 @@
 package com.chokwapeem.game;
 
 public class GameStateManager {
-
 	private GameState gameState;
 	
 	public static final int MENU = 0;
@@ -15,11 +14,9 @@ public class GameStateManager {
 		if(gameState != null) {
 			gameState.dispose();
 		}
-		
 		if(state == MENU) {
 			
 		}
-		
 		if(state == PLAY) {
 			gameState = new PlayState(this);
 		}

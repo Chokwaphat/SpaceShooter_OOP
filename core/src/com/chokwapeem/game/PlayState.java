@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 
 public class PlayState extends GameState {
-
 	private ShapeRenderer sr;
 
 	private Player player;
@@ -16,14 +15,12 @@ public class PlayState extends GameState {
 	private ArrayList<Asteroid> asteroids;
 
 	public PlayState(GameStateManager gsm) {
-		
 		super(gsm);
 
 	}
 
 	@Override
 	public void init() {
-		
 		sr = new ShapeRenderer();
 		
 		bullets = new ArrayList<Bullet>();
@@ -38,7 +35,6 @@ public class PlayState extends GameState {
 
 	@Override
 	public void update(float dt) {
-		
 		handleInput();
 
 		player.update(dt);
@@ -82,12 +78,10 @@ public class PlayState extends GameState {
 
 	@Override
 	public void handleInput() {
-		
 		player.setLeft(GameKeys.isDown(GameKeys.LEFT));
 		player.setRight(GameKeys.isDown(GameKeys.RIGHT));
 		player.setUp(GameKeys.isDown(GameKeys.UP));
 		if(GameKeys.isPressed(GameKeys.SHIFT)) {
-			
 			player.shoot();
 		}
 
@@ -95,7 +89,6 @@ public class PlayState extends GameState {
 		player2.setRight(GameKeys.isDown(GameKeys.RIGHT2));
 		player2.setUp(GameKeys.isDown(GameKeys.UP2));
 		if(GameKeys.isPressed(GameKeys.SPACE)) {
-			
 			player2.shoot();
 		}
 	}

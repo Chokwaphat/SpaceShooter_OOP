@@ -12,35 +12,27 @@ public class GameInputProcessor extends InputAdapter {
 		if(k == Keys.UP) {
 			GameKeys.setKey(GameKeys.UP, true);
 		}
-
 		if(k == Keys.LEFT) {
 			GameKeys.setKey(GameKeys.LEFT, true);
 		}
-
 		if(k == Keys.RIGHT) {
 			GameKeys.setKey(GameKeys.RIGHT, true);
 		}
-
 		if(k == Keys.W) {
 			GameKeys.setKey(GameKeys.UP2, true);
 		}
-
 		if(k == Keys.A) {
 			GameKeys.setKey(GameKeys.LEFT2, true);
 		}
-
 		if(k == Keys.D) {
 			GameKeys.setKey(GameKeys.RIGHT2, true);
 		}
-
 		if(k == Keys.SPACE) {
 			GameKeys.setKey(GameKeys.SPACE, true);
 		}
-
 		if(k == Keys.SHIFT_RIGHT) {
 			GameKeys.setKey(GameKeys.SHIFT, true);
 		}
-
 		return true;
 
 	}
@@ -49,35 +41,27 @@ public class GameInputProcessor extends InputAdapter {
 		if(k == Keys.UP) {
 			GameKeys.setKey(GameKeys.UP, false);
 		}
-
 		if(k == Keys.LEFT) {
 			GameKeys.setKey(GameKeys.LEFT, false);
 		}
-
 		if(k == Keys.RIGHT) {
 			GameKeys.setKey(GameKeys.RIGHT, false);
 		}
-
 		if(k == Keys.W) {
 			GameKeys.setKey(GameKeys.UP2, false);
 		}
-
 		if(k == Keys.A) {
 			GameKeys.setKey(GameKeys.LEFT2, false);
 		}
-
 		if(k == Keys.D) {
 			GameKeys.setKey(GameKeys.RIGHT2, false);
 		}
-
 		if(k == Keys.SPACE) {
 			GameKeys.setKey(GameKeys.SPACE, false);
 		}
-
 		if(k == Keys.SHIFT_RIGHT) {
 			GameKeys.setKey(GameKeys.SHIFT, false);
 		}
-
 		return true;
 	}
 

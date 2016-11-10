@@ -17,7 +17,6 @@ public class Asteroid extends SpaceObject {
 	private boolean remove;
 	
 	public Asteroid(float x, float y, int type) {
-		
 		this.x = x;
 		this.y = y;
 		this.type = type;
@@ -29,7 +28,6 @@ public class Asteroid extends SpaceObject {
 			speed = MathUtils.random(70, 100);
 			
 		}
-		
 		if(type == MEDIUM) {
 			numPoints = 10;
 			width = 20;
@@ -37,8 +35,6 @@ public class Asteroid extends SpaceObject {
 			speed = MathUtils.random(50, 60);
 			
 		}
-		
-		
 		if(type == LARGE) {
 			numPoints = 12;
 			width = 40;
@@ -60,7 +56,6 @@ public class Asteroid extends SpaceObject {
 		for(int i = 0; i < numPoints; i++) {
 			dists[i] = MathUtils.random(radius / 2, radius);
 		}
-		
 		setShape();
 		
 	}

@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 
 public class Player2 extends SpaceObject {
-	
 	private ArrayList<Bullet> bullets;
 	private final int MAX_BULLETS = 7;
 	
@@ -20,7 +19,6 @@ public class Player2 extends SpaceObject {
 	private float decelerate;
 
 	public Player2 (ArrayList<Bullet> bullets) {
-		
 		this.bullets = bullets;
 		
 		x = Spaceshooter.WIDTH / 2 + 200;
@@ -67,9 +65,7 @@ public class Player2 extends SpaceObject {
 	}
 	
 	public void shoot() {
-		
 		if(bullets.size() == MAX_BULLETS) {
-			
 			return;
 		}
 		
@@ -82,7 +78,6 @@ public class Player2 extends SpaceObject {
 		} else if(right) {
 			radians -= rotationSpeed * dt;
 		}
-
 		if(up) {
 			dx += MathUtils.cos(radians) * accelerate * dt;
 			dy += MathUtils.sin(radians) * accelerate * dt;
@@ -107,8 +102,6 @@ public class Player2 extends SpaceObject {
 	}
 
 	public void draw(ShapeRenderer sr) {
-
-
 		sr.setColor(0, 0, 255, 1);
 
 		sr.begin(ShapeType.Line);

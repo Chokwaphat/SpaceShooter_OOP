@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.chokwapeem.game.Spaceshooter;
 
 public class Player extends SpaceObject {
-	
 	private ArrayList<Bullet> bullets;
 	private final int MAX_BULLETS = 7;
 	
@@ -22,7 +21,6 @@ public class Player extends SpaceObject {
 	private float decelerate;
 
 	public Player (ArrayList<Bullet> bullets) {
-		
 		this.bullets = bullets;
 		x = Spaceshooter.WIDTH / 2 - 200;
 		y = Spaceshooter.HEIGHT / 2;
@@ -55,38 +53,30 @@ public class Player extends SpaceObject {
 	}
 
 	public void setLeft(boolean b) {
-		
 		left = b;
 	}
 
 	public void setRight(boolean b) {
-		
 		right = b;
 	}
 
 	public void setUp(boolean b) {
-		
 		up = b;
 	}
 	
 	public void shoot() {
-		
 		if(bullets.size() == MAX_BULLETS) {
-			
 			return;
 		}
-		
 		bullets.add(new Bullet(x, y, radians));
 	}
 	
 	public void update(float dt) {
-		
 		if(left) {
 			radians += rotationSpeed * dt;
 		} else if(right) {
 			radians -= rotationSpeed * dt;
 		}
-
 		if(up) {
 			dx += MathUtils.cos(radians) * accelerate * dt;
 			dy += MathUtils.sin(radians) * accelerate * dt;
@@ -98,12 +88,11 @@ public class Player extends SpaceObject {
 			dx -= (dx / vec) * decelerate * dt;
 			dy -= (dy / vec) * decelerate * dt;
 		}
-
 		if(vec > maxSpeed) {
 			dx = (dx / vec) * maxSpeed;
 			dy = (dy / vec) * maxSpeed;
 		}
-
+		
 		x += dx * dt;
 		y += dy * dt;
 
@@ -113,7 +102,6 @@ public class Player extends SpaceObject {
 	}
 
 	public void draw(ShapeRenderer sr) {
-
 		sr.setColor(255, 255, 0, 1);
 
 		sr.begin(ShapeType.Line);

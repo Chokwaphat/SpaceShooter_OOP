@@ -3,7 +3,6 @@ package com.chokwapeem.game;
 import com.chokwapeem.game.Spaceshooter;
 
 public class SpaceObject {
-	
 	protected float x;
 	protected float y;
 	
@@ -24,18 +23,14 @@ public class SpaceObject {
 		if(x < 0) {
 			x = Spaceshooter.WIDTH;
 		}
-		
 		if(x > Spaceshooter.WIDTH) {
 			x = 0;
 		}
-		
 		if(y < 0) {
 			y = Spaceshooter.HEIGHT;
 		}
-		
 		if(y > Spaceshooter.HEIGHT) {
 			y = 0;
-		}
-			
+		}	
 	}
 }

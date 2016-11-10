@@ -12,7 +12,6 @@ public class Bullet extends SpaceObject {
 	private boolean remove;
 	
 	public Bullet(float x, float y, float radians) {
-		
 		this.x = x;
 		this.y = y;
 		this.radians = radians;
@@ -28,12 +27,10 @@ public class Bullet extends SpaceObject {
 	}
 	
 	public boolean shouldRemove() {
-		
 		return remove;
 	}
 	
 	public void update(float dt) {
-		
 		x += dx * dt;
 		y += dy * dt;
 		

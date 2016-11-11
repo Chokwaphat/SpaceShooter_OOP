@@ -42,8 +42,8 @@ public class PlayState extends GameState {
 	
 	private void spawnAsteroids() {
 		asteroids.clear();
-		int numToSpawn = 6;
-		totalAsteroids = 10;
+		int numToSpawn = 7;
+		totalAsteroids = 13;
 		numAsteroidsLeft = totalAsteroids;
 		
 		for(int i = 0; i < numToSpawn; i++) {
@@ -56,7 +56,7 @@ public class PlayState extends GameState {
 			
 			float dx2 = x - player2.getx();
 			float dy2 = y - player2.gety();
-			float dist2 = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+			float dist2 = (float)Math.sqrt(Math.pow(dx2, 2) + Math.pow(dy2, 2));
 			
 			while(dist < 100 && dist2 < 100) {
 				x = MathUtils.random(Spaceshooter.WIDTH);
@@ -66,9 +66,9 @@ public class PlayState extends GameState {
 				dy = y - player.gety();
 				dist = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 				
-				dx = x - player2.getx();
-				dy = y - player2.gety();
-				dist = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+				dx2 = x - player2.getx();
+				dy2 = y - player2.gety();
+				dist2 = (float)Math.sqrt(Math.pow(dx2, 2) + Math.pow(dy2, 2));
 			}
 			
 			asteroids.add(new Asteroid(x, y, Asteroid.LARGE));
@@ -97,6 +97,7 @@ public class PlayState extends GameState {
 				i--;
 			}
 		}
+		spawnAsteroids();
 		checkCollisions();
 
 	}

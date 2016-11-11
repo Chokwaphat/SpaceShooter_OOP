@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 
 public class Player2 extends SpaceObject {
 	private ArrayList<Bullet> bullets;
-	private final int MAX_BULLETS = 7;
+	private final int MAX_BULLETS = 3;
 	
 	private boolean left;
 	private boolean right;

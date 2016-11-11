@@ -37,14 +37,13 @@ public class PlayState extends GameState {
 //		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.MEDIUM));
 //		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.LARGE));
 //		
-		level = 1;
 		spawnAsteroids();
 	}
 	
 	private void spawnAsteroids() {
 		asteroids.clear();
-		int numToSpawn = 4 + level - 1;
-		totalAsteroids = numToSpawn *7;
+		int numToSpawn = 6;
+		totalAsteroids = 10;
 		numAsteroidsLeft = totalAsteroids;
 		
 		for(int i = 0; i < numToSpawn; i++) {
@@ -55,12 +54,20 @@ public class PlayState extends GameState {
 			float dy = y - player.gety();
 			float dist = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 			
-			while(dist < 100) {
+			float dx2 = x - player2.getx();
+			float dy2 = y - player2.gety();
+			float dist2 = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+			
+			while(dist < 100 && dist2 < 100) {
 				x = MathUtils.random(Spaceshooter.WIDTH);
 				y = MathUtils.random(Spaceshooter.HEIGHT);
 				
 				dx = x - player.getx();
 				dy = y - player.gety();
+				dist = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+				
+				dx = x - player2.getx();
+				dy = y - player2.gety();
 				dist = (float)Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 			}
 			
@@ -90,7 +97,6 @@ public class PlayState extends GameState {
 				i--;
 			}
 		}
-		
 		checkCollisions();
 
 	}

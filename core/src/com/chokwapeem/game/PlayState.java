@@ -71,12 +71,13 @@ public class PlayState extends GameState {
 				dist2 = (float)Math.sqrt(Math.pow(dx2, 2) + Math.pow(dy2, 2));
 			}
 			
-			asteroids.add(new Asteroid(x, y, Asteroid.LARGE));
+			asteroids.add(new Asteroid(x, y, MathUtils.random(Asteroid.SMALL, Asteroid.LARGE)));
 		}
 	}
 	public void update(float dt) {
-		handleInput();
-
+		handleInputPlayer1();
+		handleInputPlayer2();
+		
 		player.update(dt);
 
 		player2.update(dt);
@@ -97,7 +98,6 @@ public class PlayState extends GameState {
 				i--;
 			}
 		}
-		spawnAsteroids();
 		checkCollisions();
 
 	}
@@ -137,14 +137,16 @@ public class PlayState extends GameState {
 	}
 
 	@Override
-	public void handleInput() {
+	public void handleInputPlayer1() {
 		player.setLeft(GameKeys.isDown(GameKeys.LEFT));
 		player.setRight(GameKeys.isDown(GameKeys.RIGHT));
 		player.setUp(GameKeys.isDown(GameKeys.UP));
 		if(GameKeys.isPressed(GameKeys.SHIFT)) {
 			player.shoot();
 		}
-
+	}
+	
+	public void handleInputPlayer2() {
 		player2.setLeft(GameKeys.isDown(GameKeys.LEFT2));
 		player2.setRight(GameKeys.isDown(GameKeys.RIGHT2));
 		player2.setUp(GameKeys.isDown(GameKeys.UP2));
@@ -153,7 +155,6 @@ public class PlayState extends GameState {
 		}
 	}
 
-	@Override
 	public void dispose() {
 
 	}

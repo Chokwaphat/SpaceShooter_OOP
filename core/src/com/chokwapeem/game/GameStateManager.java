@@ -24,7 +24,7 @@ public class GameStateManager {
 	
 	public void update(float dt) {
 		gameState.update(dt);
-//		System.out.println(dt);
+
 	}
 	
 	public void draw() {

@@ -13,6 +13,7 @@ public class Player2 extends SpaceObject {
 	private boolean left;
 	private boolean right;
 	private boolean up;
+	private boolean down;
 
 	private float maxSpeed;
 	private float accelerate;
@@ -21,7 +22,7 @@ public class Player2 extends SpaceObject {
 	public Player2 (ArrayList<Bullet> bullets) {
 		this.bullets = bullets;
 		
-		x = Spaceshooter.WIDTH / 2 + 200;
+		x = Spaceshooter.WIDTH / 2 - 200;
 		y = Spaceshooter.HEIGHT / 2;
 
 		maxSpeed = 300;
@@ -38,17 +39,17 @@ public class Player2 extends SpaceObject {
 	}
 
 	private void setShape() {
-		shapex[0] = x + MathUtils.cos(radians) * 13;
-		shapey[0] = y + MathUtils.sin(radians) * 13;
+		shapex[0] = x + MathUtils.cos(radians) * 8;
+		shapey[0] = y + MathUtils.sin(radians) * 8;
 
-		shapex[1] = x + MathUtils.cos(radians - 4 * (float)Math.PI / 5) * 13;
-		shapey[1] = y + MathUtils.sin(radians - 4 * (float)Math.PI  / 5) * 13;
+		shapex[1] = x + MathUtils.cos(radians - 4 * (float)Math.PI / 5) * 8;
+		shapey[1] = y + MathUtils.sin(radians - 4 * (float)Math.PI  / 5) * 8;
 
 		shapex[2] = x + MathUtils.cos(radians + (float)Math.PI ) * 5;
 		shapey[2] = y + MathUtils.sin(radians + (float)Math.PI ) * 5;
 
-		shapex[3] = x + MathUtils.cos(radians + 4 * (float)Math.PI  / 5) * 13;
-		shapey[3] = y + MathUtils.sin(radians + 4 * (float)Math.PI  / 5) * 13;
+		shapex[3] = x + MathUtils.cos(radians + 4 * (float)Math.PI  / 5) * 8;
+		shapey[3] = y + MathUtils.sin(radians + 4 * (float)Math.PI  / 5) * 8;
 
 	}
 
@@ -62,6 +63,10 @@ public class Player2 extends SpaceObject {
 
 	public void setUp(boolean b) {
 		up = b;
+	}
+	
+	public void setDown(boolean b) {
+		down = b;
 	}
 	
 	public void shoot() {
@@ -81,6 +86,9 @@ public class Player2 extends SpaceObject {
 		if(up) {
 			dx += MathUtils.cos(radians) * accelerate * dt;
 			dy += MathUtils.sin(radians) * accelerate * dt;
+		} else if(down) {
+			dx -= MathUtils.cos(radians) * accelerate * dt;
+			dy -= MathUtils.sin(radians) * accelerate * dt;
 		}
 
 		float vec = (float) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
@@ -112,6 +120,10 @@ public class Player2 extends SpaceObject {
 
 		sr.end();
 
+	}
+	
+	public void hit() {
+		
 	}
 
 }

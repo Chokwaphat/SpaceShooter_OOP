@@ -3,18 +3,22 @@ package com.chokwapeem.game;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.chokwapeem.game.Spaceshooter;
 
-public class Player extends SpaceObject {
+public class Player extends SpaceObject {	
 	private ArrayList<Bullet> bullets;
-	private final int MAX_BULLETS = 7;
+	private final int MAX_BULLETS = 3;
 	
 	private boolean left;
 	private boolean right;
 	private boolean up;
+	private boolean down;
 
 	private float maxSpeed;
 	private float accelerate;
@@ -22,7 +26,7 @@ public class Player extends SpaceObject {
 
 	public Player (ArrayList<Bullet> bullets) {
 		this.bullets = bullets;
-		x = Spaceshooter.WIDTH / 2 - 200;
+		x = Spaceshooter.WIDTH / 2 + 200;
 		y = Spaceshooter.HEIGHT / 2;
 
 		maxSpeed = 300;
@@ -38,17 +42,17 @@ public class Player extends SpaceObject {
 	}
 	
 	private void setShape() {
-		shapex[0] = x + MathUtils.cos(radians) * 13;
-		shapey[0] = y + MathUtils.sin(radians) * 13;
+		shapex[0] = x + MathUtils.cos(radians) * 8;
+		shapey[0] = y + MathUtils.sin(radians) * 8;
 
-		shapex[1] = x + MathUtils.cos(radians - 4 * (float)Math.PI / 5) * 13;
-		shapey[1] = y + MathUtils.sin(radians - 4 * (float)Math.PI  / 5) * 13;
+		shapex[1] = x + MathUtils.cos(radians - 4 * (float)Math.PI / 5) * 8;
+		shapey[1] = y + MathUtils.sin(radians - 4 * (float)Math.PI  / 5) * 8;
 
 		shapex[2] = x + MathUtils.cos(radians + (float)Math.PI ) * 5;
 		shapey[2] = y + MathUtils.sin(radians + (float)Math.PI ) * 5;
 
-		shapex[3] = x + MathUtils.cos(radians + 4 * (float)Math.PI  / 5) * 13;
-		shapey[3] = y + MathUtils.sin(radians + 4 * (float)Math.PI  / 5) * 13;
+		shapex[3] = x + MathUtils.cos(radians + 4 * (float)Math.PI  / 5) * 8;
+		shapey[3] = y + MathUtils.sin(radians + 4 * (float)Math.PI  / 5) * 8;
 
 	}
 
@@ -62,6 +66,10 @@ public class Player extends SpaceObject {
 
 	public void setUp(boolean b) {
 		up = b;
+	}
+	
+	public void setDown(boolean b) {
+		down = b;
 	}
 	
 	public void shoot() {
@@ -81,6 +89,9 @@ public class Player extends SpaceObject {
 			dx += MathUtils.cos(radians) * accelerate * dt;
 			dy += MathUtils.sin(radians) * accelerate * dt;
 			
+		} else if(down) {
+			dx -= MathUtils.cos(radians) * accelerate * dt;
+			dy -= MathUtils.sin(radians) * accelerate * dt;
 		}
 
 		float vec = (float) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
@@ -111,6 +122,9 @@ public class Player extends SpaceObject {
 		}
 		
 		sr.end();
-
+	}
+	
+	public void hit() {
+		
 	}
 }

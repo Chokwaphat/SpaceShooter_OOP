@@ -18,6 +18,9 @@ public class GameInputProcessor extends InputAdapter {
 		if(k == Keys.RIGHT) {
 			GameKeys.setKey(GameKeys.RIGHT, true);
 		}
+		if(k == Keys.DOWN) {
+			GameKeys.setKey(GameKeys.DOWN, true);
+		}
 		if(k == Keys.W) {
 			GameKeys.setKey(GameKeys.UP2, true);
 		}
@@ -26,6 +29,9 @@ public class GameInputProcessor extends InputAdapter {
 		}
 		if(k == Keys.D) {
 			GameKeys.setKey(GameKeys.RIGHT2, true);
+		}
+		if(k == Keys.S) {
+			GameKeys.setKey(GameKeys.DOWN2, true);
 		}
 		if(k == Keys.SPACE) {
 			GameKeys.setKey(GameKeys.SPACE, true);
@@ -47,6 +53,9 @@ public class GameInputProcessor extends InputAdapter {
 		if(k == Keys.RIGHT) {
 			GameKeys.setKey(GameKeys.RIGHT, false);
 		}
+		if(k == Keys.DOWN) {
+			GameKeys.setKey(GameKeys.DOWN, false);
+		}
 		if(k == Keys.W) {
 			GameKeys.setKey(GameKeys.UP2, false);
 		}
@@ -55,6 +64,9 @@ public class GameInputProcessor extends InputAdapter {
 		}
 		if(k == Keys.D) {
 			GameKeys.setKey(GameKeys.RIGHT2, false);
+		}
+		if(k == Keys.S) {
+			GameKeys.setKey(GameKeys.DOWN2, false);
 		}
 		if(k == Keys.SPACE) {
 			GameKeys.setKey(GameKeys.SPACE, false);

@@ -23,24 +23,21 @@ public class Asteroid extends SpaceObject {
 		
 		if(type == SMALL) {
 			numPoints = 8;
-			width = 40;
-			height = 40;
+			width = 10;
+			height = 30;
 			speed = MathUtils.random(70, 100);
 			
-		}
-		if(type == MEDIUM) {
+		} else if(type == MEDIUM) {
 			numPoints = 10;
 			width = 20;
 			height = 40;
 			speed = MathUtils.random(50, 60);
 			
-		}
-		if(type == LARGE) {
+		} else if(type == LARGE) {
 			numPoints = 12;
 			width = 40;
 			height = 40;
 			speed = MathUtils.random(20, 30);
-			
 		}
 		
 		rotationSpeed = MathUtils.random(-1, 1);
@@ -92,5 +89,9 @@ public class Asteroid extends SpaceObject {
 			sr.line(shapex[i], shapey[i], shapex[j], shapey[j]);
 		}
 		sr.end();
+	}
+	
+	public int getType() {
+		return type;
 	}
 }

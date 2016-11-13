@@ -3,6 +3,9 @@ package com.chokwapeem.game;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 
@@ -15,7 +18,6 @@ public class PlayState extends GameState {
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Asteroid> asteroids;
 	
-	private int level;
 	private int totalAsteroids;
 	private int numAsteroidsLeft;
 
@@ -33,11 +35,22 @@ public class PlayState extends GameState {
 		player2 = new Player2(bullets);
 		
 		asteroids = new ArrayList<Asteroid>();
-//		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.SMALL));
-//		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.MEDIUM));
-//		asteroids.add(new Asteroid(MathUtils.random(800),MathUtils.random(600),Asteroid.LARGE));
-//		
 		spawnAsteroids();
+	}
+	
+	private void split(Asteroid a) {
+		numAsteroidsLeft--;
+		if(a.getType() == Asteroid.LARGE) {
+			asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
+			asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
+			asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.MEDIUM));
+		}
+		if(a.getType() == Asteroid.MEDIUM) {
+			asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
+			asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));  
+			asteroids.add(new Asteroid(a.getx(), a.gety(), Asteroid.SMALL));
+		}
+		
 	}
 	
 	private void spawnAsteroids() {
@@ -82,8 +95,7 @@ public class PlayState extends GameState {
 
 		player2.update(dt);
 		
-		for(int i = 0; i < bullets.size(); i++) {
-			
+		for(int i = 0; i < bullets.size(); i++) { 
 			bullets.get(i).update(dt);
 			if(bullets.get(i).shouldRemove()) {
 				bullets.remove(i);
@@ -105,8 +117,22 @@ public class PlayState extends GameState {
 	private void checkCollisions() {
 		for(int i = 0; i < asteroids.size(); i++) {
 			Asteroid a = asteroids.get(i);
-			//Not DONE
+			if(a.intersects(player)) {
+				player.hit();
+				i--;
+				break;
+			}	
 		}
+		
+		for(int i = 0; i < asteroids.size(); i++) {
+			Asteroid a = asteroids.get(i);
+			if(a.intersects(player2)) {
+				player2.hit();
+				i--;
+				break;
+			}	
+		}
+		
 		for(int i = 0; i < bullets.size(); i++) {
 			Bullet b = bullets.get(i);
 			for(int j = 0; j < asteroids.size(); j++) {
@@ -116,6 +142,7 @@ public class PlayState extends GameState {
 					i--;
 					asteroids.remove(j);
 					j--;
+					split(a);
 					break;
 				}
 			}
@@ -134,13 +161,14 @@ public class PlayState extends GameState {
 		for(int i = 0; i < asteroids.size(); i++) {
 			asteroids.get(i).draw(sr);
 		}
+		
 	}
 
-	@Override
 	public void handleInputPlayer1() {
 		player.setLeft(GameKeys.isDown(GameKeys.LEFT));
 		player.setRight(GameKeys.isDown(GameKeys.RIGHT));
 		player.setUp(GameKeys.isDown(GameKeys.UP));
+		player.setDown(GameKeys.isDown(GameKeys.DOWN));
 		if(GameKeys.isPressed(GameKeys.SHIFT)) {
 			player.shoot();
 		}
@@ -150,6 +178,7 @@ public class PlayState extends GameState {
 		player2.setLeft(GameKeys.isDown(GameKeys.LEFT2));
 		player2.setRight(GameKeys.isDown(GameKeys.RIGHT2));
 		player2.setUp(GameKeys.isDown(GameKeys.UP2));
+		player2.setDown(GameKeys.isDown(GameKeys.DOWN2));
 		if(GameKeys.isPressed(GameKeys.SPACE)) {
 			player2.shoot();
 		}

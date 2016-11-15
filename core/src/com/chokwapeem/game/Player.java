@@ -12,7 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.chokwapeem.game.Spaceshooter;
-
+//dsfsdfsfsdf
 public class Player extends SpaceObject {	
 	private ArrayList<Bullet> bullets;
 	private final int MAX_BULLETS = 3;
